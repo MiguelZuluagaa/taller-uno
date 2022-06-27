@@ -1,23 +1,14 @@
 package com.co.talleruno.service;
 
-import com.co.talleruno.mapper.BacklogInDtoTOBacklog;
-import com.co.talleruno.persistence.entity.BackLog;
-import com.co.talleruno.persistence.repository.BackLogRepository;
-import com.co.talleruno.service.dto.BacklogInDTO;
+import com.co.talleruno.persistence.entity.Backlog;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-@RequiredArgsConstructor
-public class BacklogService {
+public interface BacklogService {
 
-    private final BackLogRepository repository;
-    private final BacklogInDtoTOBacklog mapper;
-
-    public BackLog createBacklog(BacklogInDTO backlogInDTO){
-        BackLog backlog = mapper.map(backlogInDTO);
-        return this.repository.save(backlog);
-    }
+    List<Backlog> findAll();
+    Backlog findById(Long id);
+    Backlog save(Backlog backlog);
+    void delete(Long id);
 
 }

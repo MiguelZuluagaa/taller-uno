@@ -31,7 +31,7 @@ public class ProjectTask {
     private String acceptanceCriteria;
 
     @Column(name = "status")
-    private String status;
+    private ProjectStatus projectStatus;
 
     @Column(name = "priority")
     private Integer priority;
@@ -49,8 +49,8 @@ public class ProjectTask {
     private String projectIdentifier;
 
     @ManyToOne()
-    @JoinColumn(name = "backLog_id")
-    private BackLog backLog;
+    @JoinColumn(name = "backlog_id")
+    private Backlog backlog;
 
     @Override
     public boolean equals(Object o) {

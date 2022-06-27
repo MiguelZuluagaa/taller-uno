@@ -3,6 +3,7 @@ package com.co.talleruno.persistence.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -30,14 +31,14 @@ public class Project {
     private String descripcion;
 
     @Column(name = "startDate")
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "endDate")
     private Date endDate;
 
-    @JoinColumn(name = "backLog")
+    @JoinColumn(name = "backlog")
     @OneToOne(fetch = FetchType.LAZY)
-    private BackLog backLog;
+    private Backlog backlog;
 
     @Override
     public boolean equals(Object o) {

@@ -11,16 +11,17 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @Entity
-@Table(name ="backLogs")
-public class BackLog {
+@Table(name ="backlogs")
+public class Backlog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id",updatable = false,nullable = false,unique = true)
     private Long id;
 
-    @Column(name = "projectIdentifier")
+    @Column(name = "project_identifier")
     private String projectIdentifier;
 
     @JoinColumn(name = "project")
@@ -31,16 +32,16 @@ public class BackLog {
     @OneToMany()
     private List<ProjectTask> projectTask;
 
-    @Override
+/*    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BackLog backLog = (BackLog) o;
-        return Objects.equals(id, backLog.id);
-    }
+        Backlog backlog = (Backlog) o;
+        return Objects.equals(id, backlog.id);
+    }*/
 
-    @Override
+/*    @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
+    }*/
 }

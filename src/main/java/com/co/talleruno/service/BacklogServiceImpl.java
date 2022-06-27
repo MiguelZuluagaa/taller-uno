@@ -1,36 +1,33 @@
 package com.co.talleruno.service;
 
-import com.co.talleruno.mapper.ProjectInDtoToProject;
-import com.co.talleruno.persistence.entity.Project;
-import com.co.talleruno.persistence.repository.ProjectRepository;
+import com.co.talleruno.persistence.entity.Backlog;
+import com.co.talleruno.persistence.repository.BacklogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
 @Service
 @RequiredArgsConstructor
-public class ProjectServiceImpl implements ProjectService {
+public class BacklogServiceImpl implements BacklogService{
 
-    private final ProjectRepository repository;
-
+    private final BacklogRepository repository;
 
     @Override
     @Transactional(readOnly = true)
-    public List<Project> findAll() {
+    public List<Backlog> findAll() {
         return repository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Project findById(Long id) {
+    public Backlog findById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public Project save(Project project) {
-        return repository.save(project);
+    public Backlog save(Backlog backlog) {
+        return repository.save(backlog);
     }
 
     @Override
