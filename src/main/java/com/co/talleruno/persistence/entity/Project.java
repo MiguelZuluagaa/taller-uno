@@ -3,6 +3,7 @@ package com.co.talleruno.persistence.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
@@ -21,19 +22,22 @@ public class Project {
     @Column(name="id",updatable = false,nullable = false,unique = true)
     private Long id;
 
-    @Column(name = "projectName")
+    @NotEmpty(message = "El nombre del proyecto no puede estar vacio ")
+    @Column(name = "project_name")
     private String projectName;
 
-    @Column(name = "projectIdentifier")
+    @NotEmpty(message = "El identificador del proyecto no puede estar vacio")
+    @Column(name = "project_identifier")
     private String projectIdentifier;
 
+    @NotEmpty(message = "La descripcion no puede estar vacia")
     @Column(name = "descripcion")
     private String descripcion;
 
-    @Column(name = "startDate")
+    @Column(name = "start_date")
     private LocalDate startDate;
 
-    @Column(name = "endDate")
+    @Column(name = "end_date")
     private Date endDate;
 
     @JoinColumn(name = "backlog")

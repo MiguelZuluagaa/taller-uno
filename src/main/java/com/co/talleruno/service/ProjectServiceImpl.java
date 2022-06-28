@@ -13,28 +13,31 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProjectServiceImpl implements ProjectService {
 
-    private final ProjectRepository repository;
+    private final ProjectRepository projectRepository;
+
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void save(Project project) {
+        projectRepository.save(project);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(Project project) {
+        projectRepository.delete(project);
+    }
 
 
     @Override
     @Transactional(readOnly = true)
     public List<Project> findAll() {
-        return repository.findAll();
+        return projectRepository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
     public Project findById(Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    @Override
-    public Project save(Project project) {
-        return repository.save(project);
-    }
-
-    @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
+        return projectRepository.findById(id).orElse(null);
     }
 }

@@ -4,6 +4,7 @@ package com.co.talleruno.persistence.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 import java.util.Objects;
 
@@ -17,17 +18,20 @@ import java.util.Objects;
 public class ProjectTask {
 
     @Id
+    @NotEmpty(message = "El id no puede estar vacio")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id",updatable = false,nullable = false,unique = true)
     private Long id;
 
+    @NotEmpty(message = "EL nombre no puede estar vacio")
     @Column(name = "name")
     private String name;
 
+    @NotEmpty(message = "El resumen no puede estar vacio")
     @Column(name = "summary")
     private String summary;
 
-    @Column(name = "acceptanceCriteria")
+    @Column(name = "acceptance_criteria")
     private String acceptanceCriteria;
 
     @Column(name = "status")
@@ -39,13 +43,13 @@ public class ProjectTask {
     @Column(name = "hours")
     private Double hours;
 
-    @Column(name = "startDate")
+    @Column(name = "start_date")
     private Date startDate;
 
-    @Column(name = "ndDate")
+    @Column(name = "end_date")
     private Date endDate;
 
-    @Column(name = "projectIdentifier")
+    @Column(name = "project_identifier")
     private String projectIdentifier;
 
     @ManyToOne()

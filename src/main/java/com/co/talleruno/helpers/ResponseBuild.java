@@ -7,25 +7,22 @@ import static org.springframework.http.HttpStatus.*;
 @Component
 public class ResponseBuild {
 
-    public Response success(){
+    public Response success() {
         return Response.builder()
-                .code(OK.value())
                 .data(OK)
-                .build();
+                .code(OK.value()).build();
     }
 
-    public Response success(Object data){
+    public Response success(Object data) {
         return Response.builder()
-                .code(OK.value())
                 .data(data)
-                .build();
+                .code(OK.value()).build();
     }
 
-    public Response failed(Object data){
+    public Response failed(Object data) {
         return Response.builder()
-                .code(INTERNAL_SERVER_ERROR.ordinal())
                 .data(data)
-                .build();
+                .code(INTERNAL_SERVER_ERROR.value()).build();
     }
 
 

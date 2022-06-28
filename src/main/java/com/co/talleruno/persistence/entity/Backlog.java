@@ -3,6 +3,7 @@ package com.co.talleruno.persistence.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,7 +12,6 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @Entity
 @Table(name ="backlogs")
 public class Backlog {
@@ -21,6 +21,7 @@ public class Backlog {
     @Column(name="id",updatable = false,nullable = false,unique = true)
     private Long id;
 
+    @NotEmpty(message = "El identificador del proyecto no puede estar vacio")
     @Column(name = "project_identifier")
     private String projectIdentifier;
 
@@ -32,16 +33,16 @@ public class Backlog {
     @OneToMany()
     private List<ProjectTask> projectTask;
 
-/*    @Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Backlog backlog = (Backlog) o;
         return Objects.equals(id, backlog.id);
-    }*/
+    }
 
-/*    @Override
+    @Override
     public int hashCode() {
         return Objects.hash(id);
-    }*/
+    }
 }
