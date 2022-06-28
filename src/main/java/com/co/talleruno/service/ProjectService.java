@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ProjectService {
 
-    void save(Project project);
+    Project save(Project project);
 
     void delete(Project project);
 

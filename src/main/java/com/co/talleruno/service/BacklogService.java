@@ -9,6 +9,6 @@ public interface BacklogService {
     List<Backlog> findAll();
     Backlog findById(Long id);
     Backlog save(Backlog backlog);
-    void delete(Long id);
+    void delete(Backlog backlog);
 
 }

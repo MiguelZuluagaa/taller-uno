@@ -43,8 +43,7 @@ public class ProjectController {
 
 
 
-/*    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @PutMapping("/{id}")
     public Project update(@RequestBody Project project, @PathVariable Long id){
         Project projectActual = projectService.findById(id);
         projectActual.setProjectName(project.getProjectName());
@@ -55,7 +54,7 @@ public class ProjectController {
         projectActual.setBacklog(project.getBacklog());
 
         return projectService.save(projectActual);
-    }*/
+    }
 
     @DeleteMapping("/{id}")
     public Response delete(@PathVariable("id") Long id){

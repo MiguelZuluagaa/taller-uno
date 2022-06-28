@@ -1,6 +1,5 @@
 package com.co.talleruno.service;
 
-import com.co.talleruno.mapper.ProjectInDtoToProject;
 import com.co.talleruno.persistence.entity.Project;
 import com.co.talleruno.persistence.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +17,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(Project project) {
+    public Project save(Project project) {
         projectRepository.save(project);
+        return project;
     }
 
     @Override

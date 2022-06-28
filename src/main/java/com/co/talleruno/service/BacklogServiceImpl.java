@@ -11,27 +11,29 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BacklogServiceImpl implements BacklogService{
 
-    private final BacklogRepository repository;
+    private final BacklogRepository backlogRepository;
 
     @Override
     @Transactional(readOnly = true)
     public List<Backlog> findAll() {
-        return repository.findAll();
+        return backlogRepository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
     public Backlog findById(Long id) {
-        return repository.findById(id).orElse(null);
+        return backlogRepository.findById(id).orElse(null);
     }
 
     @Override
     public Backlog save(Backlog backlog) {
-        return repository.save(backlog);
+        return backlogRepository.save(backlog);
     }
 
     @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public void delete(Backlog backlog) {
+        backlogRepository.delete(backlog);
     }
+
+
 }
