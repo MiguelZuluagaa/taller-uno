@@ -5,7 +5,7 @@ import com.co.talleruno.service.dto.BacklogInDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BacklogInDtoTOBacklog implements IMapper<BacklogInDTO, Backlog>{
+public class BacklogInDtoToBacklog implements IMapper<BacklogInDTO, Backlog>{
 
     @Override
     public Backlog map(BacklogInDTO in) {

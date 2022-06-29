@@ -2,8 +2,10 @@ package com.co.talleruno.controller;
 
 import com.co.talleruno.helpers.Response;
 import com.co.talleruno.helpers.ResponseBuild;
+import com.co.talleruno.mapper.ProjectTaskInDtoToProjectTask;
 import com.co.talleruno.persistence.entity.ProjectTask;
 import com.co.talleruno.service.ProjectTaskService;
+import com.co.talleruno.service.dto.ProjectTaskInDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -21,15 +23,16 @@ import java.util.stream.Collectors;
 public class ProjectTaskController {
 
     private final ProjectTaskService projectTaskService;
+    private final ProjectTaskInDtoToProjectTask mapper;
     private final ResponseBuild build;
 
 
     @PostMapping
-    public Response save(@Valid @RequestBody ProjectTask projectTask, BindingResult result){
+    public Response save(@Valid @RequestBody ProjectTaskInDTO projectTask, BindingResult result){
         if (result.hasErrors()){
             return build.failed(formatMessage(result));
         }
-        projectTaskService.save(projectTask);
+        projectTaskService.save(mapper.map(projectTask));
         return build.success(projectTask);
     }
 

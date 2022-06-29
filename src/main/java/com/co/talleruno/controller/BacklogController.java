@@ -2,8 +2,10 @@ package com.co.talleruno.controller;
 
 import com.co.talleruno.helpers.Response;
 import com.co.talleruno.helpers.ResponseBuild;
+import com.co.talleruno.mapper.BacklogInDtoToBacklog;
 import com.co.talleruno.persistence.entity.Backlog;
 import com.co.talleruno.service.BacklogService;
+import com.co.talleruno.service.dto.BacklogInDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -21,14 +23,15 @@ import java.util.stream.Collectors;
 public class BacklogController {
 
     private final BacklogService backlogService;
+    private final BacklogInDtoToBacklog mapper;
     private final ResponseBuild build;
 
     @PostMapping()
-    public Response save(@Valid @RequestBody Backlog backlog, BindingResult result){
+    public Response save(@Valid @RequestBody BacklogInDTO backlog, BindingResult result){
         if (result.hasErrors()){
             return build.failed(formatMessage(result));
         }
-        backlogService.save(backlog);
+        backlogService.save(mapper.map(backlog));
         return build.success(backlog);
     }
 
