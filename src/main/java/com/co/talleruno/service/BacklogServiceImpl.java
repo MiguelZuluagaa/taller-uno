@@ -27,10 +27,13 @@ public class BacklogServiceImpl implements BacklogService{
 
     @Override
     public Backlog save(Backlog backlog) {
-        return backlogRepository.save(backlog);
+        backlogRepository.save(backlog);
+        return backlog;
     }
 
+
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void delete(Backlog backlog) {
         backlogRepository.delete(backlog);
     }

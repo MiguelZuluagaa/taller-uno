@@ -8,5 +8,5 @@ public interface ProjectTaskService {
     List<ProjectTask> findAll();
     ProjectTask findById(Long id);
     ProjectTask save(ProjectTask projectTask);
-    void delete(Long id);
+    void delete(ProjectTask projectTask);
 }

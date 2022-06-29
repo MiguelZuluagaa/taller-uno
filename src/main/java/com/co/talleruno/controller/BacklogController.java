@@ -50,7 +50,6 @@ public class BacklogController {
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
     public Backlog update(@RequestBody Backlog backlog, @PathVariable Long id){
         Backlog backlogActual = backlogService.findById(id);
         backlogActual.setProjectIdentifier(backlog.getProjectIdentifier());

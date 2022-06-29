@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -44,7 +45,7 @@ public class ProjectTask {
     private Double hours;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
     private Date endDate;

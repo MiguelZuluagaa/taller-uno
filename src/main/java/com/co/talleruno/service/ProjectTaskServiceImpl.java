@@ -11,27 +11,32 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProjectTaskServiceImpl implements ProjectTaskService{
 
-    private final ProjectTaskRepository repository;
+    private final ProjectTaskRepository projectTaskRepository;
 
     @Override
     @Transactional(readOnly = true)
     public List<ProjectTask> findAll() {
-        return repository.findAll();
+        return projectTaskRepository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
     public ProjectTask findById(Long id) {
-        return repository.findById(id).orElse(null);
+        return projectTaskRepository.findById(id).orElse(null);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ProjectTask save(ProjectTask projectTask) {
-        return repository.save(projectTask);
+        projectTaskRepository.save(projectTask);
+        return projectTask;
     }
 
     @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(ProjectTask projectTask) {
+        projectTaskRepository.delete(projectTask);
     }
+
+
 }
