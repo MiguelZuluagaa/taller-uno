@@ -17,7 +17,7 @@ public class ProjectInDtoToProject implements IMapper<ProjectInDTO, Project>{
         project.setProjectName(in.getProjectName());
         project.setProjectIdentifier(in.getProjectIdentifier());
         project.setDescripcion(in.getDescripcion());
-        project.setStartDate(LocalDate.now());
+        project.setStartDate(LocalDateTime.now());
         project.setEndDate(in.getEndDate());
         project.setBacklog(in.getBacklog());
         return project;

@@ -2,9 +2,12 @@ package com.co.talleruno.controller;
 
 import com.co.talleruno.helpers.Response;
 import com.co.talleruno.helpers.ResponseBuild;
+import com.co.talleruno.mapper.ProjectInDtoToProject;
 import com.co.talleruno.persistence.entity.Project;
 import com.co.talleruno.service.ProjectService;
+import com.co.talleruno.service.dto.ProjectInDTO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,20 +17,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("/projects/")
 @RequiredArgsConstructor
 public class ProjectController {
 
     private final ProjectService projectService;
+
+    private final ProjectInDtoToProject mapper;
     private final ResponseBuild build;
 
     @PostMapping()
-    public Response save(@Valid @RequestBody Project project, BindingResult result){
-        if (result.hasErrors()){
+    public Response save(@Valid @RequestBody ProjectInDTO project, BindingResult result){
+               if (result.hasErrors()){
             return build.failed(formatMessage(result));
         }
-        projectService.save(project);
+        projectService.save(mapper.map(project));
         return build.success(project);
     }
 
