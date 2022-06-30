@@ -12,7 +12,7 @@ public class BacklogInDtoToBacklog implements IMapper<BacklogInDTO, Backlog>{
         Backlog backlog = new Backlog();
         backlog.setProjectIdentifier(in.getProjectIdentifier());
         backlog.setProject(in.getProject());
-        backlog.setProjectTask(in.getProjectTask());
+        //backlog.setProjectTask(in.getProjectTask());
         return backlog;
     }
 }

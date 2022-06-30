@@ -26,12 +26,14 @@ public class Backlog {
     private String projectIdentifier;
 
     @JoinColumn(name = "project")
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne()
     private Project project;
 
+    /*
     @JoinColumn(name = "projectTask")
     @OneToMany()
     private List<ProjectTask> projectTask;
+     */
 
     @Override
     public boolean equals(Object o) {

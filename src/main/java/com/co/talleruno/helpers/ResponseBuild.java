@@ -9,20 +9,32 @@ public class ResponseBuild {
 
     public Response success() {
         return Response.builder()
-                .data(OK)
-                .code(OK.value()).build();
+                .data(CREATED.getReasonPhrase())
+                .code(CREATED.value()).build();
     }
 
     public Response success(Object data) {
         return Response.builder()
                 .data(data)
-                .code(OK.value()).build();
+                .code(CREATED.value()).build();
+    }
+
+    public Response failed() {
+        return Response.builder()
+                .data(BAD_REQUEST.getReasonPhrase())
+                .code(BAD_REQUEST.value()).build();
+    }
+
+    public Response failedTaskNotFound() {
+        return Response.builder()
+                .data(NOT_FOUND.getReasonPhrase())
+                .code(NOT_FOUND.value()).build();
     }
 
     public Response failed(Object data) {
         return Response.builder()
                 .data(data)
-                .code(INTERNAL_SERVER_ERROR.value()).build();
+                .code(BAD_REQUEST.value()).build();
     }
 
 

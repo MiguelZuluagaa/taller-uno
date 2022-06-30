@@ -30,7 +30,7 @@ public class ProjectController {
 
     @PostMapping()
     public Response save(@Valid @RequestBody ProjectInDTO project, BindingResult result){
-               if (result.hasErrors()){
+        if (result.hasErrors()){
             return build.failed(formatMessage(result));
         }
         projectService.save(mapper.map(project));
@@ -49,6 +49,7 @@ public class ProjectController {
 
 
 
+    /*
     @PutMapping("/{id}")
     public Project update(@RequestBody Project project, @PathVariable Long id){
         Project projectActual = projectService.findById(id);
@@ -61,13 +62,16 @@ public class ProjectController {
 
         return projectService.save(projectActual);
     }
+     */
 
+    /*
     @DeleteMapping("/{id}")
     public Response delete(@PathVariable("id") Long id){
         Project project = projectService.findById(id);
         projectService.delete(project);
         return build.success(project);
     }
+     */
 
     private List<Map<String, String>> formatMessage(BindingResult result) {
         List<Map<String, String>> errors = result.getFieldErrors().stream()

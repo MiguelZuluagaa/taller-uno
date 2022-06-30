@@ -42,7 +42,7 @@ public class Project {
     private LocalDateTime endDate;
 
     @JoinColumn(name = "backlog")
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne()
     private Backlog backlog;
 
     @Override

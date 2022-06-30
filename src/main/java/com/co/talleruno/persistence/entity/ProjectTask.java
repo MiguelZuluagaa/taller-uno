@@ -20,7 +20,7 @@ import java.util.Objects;
 public class ProjectTask {
 
     @Id
-    @NotEmpty(message = "El id no puede estar vacio")
+    //@NotEmpty(message = "El id no puede estar vacio")
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id",updatable = false,nullable = false,unique = true)
     private Long id;

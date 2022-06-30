@@ -36,24 +36,52 @@ public class ProjectTaskController {
         return build.success(projectTask);
     }
 
+    /*
     @DeleteMapping("/{id}")
     public Response delete(@PathVariable("id") Long id){
         ProjectTask projectTask = projectTaskService.findById(id);
         projectTaskService.delete(projectTask);
         return build.success(projectTask);
     }
+     */
 
-    @GetMapping()
+    @GetMapping("/projects")
     public List<ProjectTask> index(){
         return projectTaskService.findAll();
     }
 
+    /*
     @GetMapping("/{id}")
     public Response findAll(){
         return build.success(projectTaskService.findAll());
     }
+     */
+
+    @GetMapping("/project/{projectIdentifier}")
+    public Response findTasksByProjectIdentifier(@PathVariable("projectIdentifier") String projectIdentifier){
+
+        if(projectTaskService.existsByProjectIdentifier(projectIdentifier)){
+            return build.success(projectTaskService.findByProjectIdentifier(projectIdentifier));
+        }
+
+        return build.failedTaskNotFound();
+    }
+
+   @GetMapping("project/hours/{projectIdentifier}")
+   public Response getTotalHoursByProjectIdentifier(@PathVariable("projectIdentifier") String projectIdentifier){
+
+       if(projectTaskService.existsByProjectIdentifier(projectIdentifier)){
+
+           return build.success(projectTaskService.getTotalHoursByProjectIdentifier(projectIdentifier));
+
+       }
+
+       return build.failedTaskNotFound();
+   }
 
 
+
+    /*
     @PutMapping("/{id}")
     public ProjectTask update(@RequestBody ProjectTask projectTask, @PathVariable Long id){
         ProjectTask projectTaskActual = projectTaskService.findById(id);
@@ -70,6 +98,7 @@ public class ProjectTaskController {
 
         return projectTaskService.save(projectTaskActual);
     }
+     */
 
 
 

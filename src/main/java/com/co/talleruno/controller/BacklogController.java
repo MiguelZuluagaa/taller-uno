@@ -32,15 +32,18 @@ public class BacklogController {
             return build.failed(formatMessage(result));
         }
         backlogService.save(mapper.map(backlog));
-        return build.success(backlog);
+        //return build.success(backlog);
+        return build.success();
     }
 
+    /*
     @DeleteMapping("/{id}")
     public Response delete(@PathVariable("id") Long id){
         Backlog backlog = backlogService.findById(id);
         backlogService.delete(backlog);
         return build.success(backlog);
     }
+     */
 
     @GetMapping()
     public Response findAll(){
@@ -52,6 +55,7 @@ public class BacklogController {
         return build.success(backlogService.findById(id));
     }
 
+    /*
     @PutMapping("/{id}")
     public Backlog update(@RequestBody Backlog backlog, @PathVariable Long id){
         Backlog backlogActual = backlogService.findById(id);
@@ -61,6 +65,7 @@ public class BacklogController {
 
         return backlogService.save(backlogActual);
     }
+     */
 
     private List<Map<String, String>> formatMessage(BindingResult result) {
         List<Map<String, String>> errors = result.getFieldErrors().stream()
